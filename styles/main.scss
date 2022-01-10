@@ -1,0 +1,253 @@
+@use './variables' as variables;
+
+body{
+  margin:0px;
+  padding:0px;
+  overflow-x:hidden;
+}
+*{
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+$font-size : 1.5em;
+$reduced-font-size : 1.2em;
+$info_circle_size : 2em;
+
+
+$input_padding : 0.6em 0.5em;
+$input_group_padding : 3em 0px;
+$input_margin : 0.5em 0px;
+
+
+@mixin input-group-width {
+  width:600px; 
+  max-width:90%;
+}
+
+.form-body{
+  &__input-group{
+    @include input-group-width();
+    margin:0 auto;
+    padding : $input_group_padding;
+    position:relative;
+    &__label{
+      display:block;
+      font-size:$font-size;
+      font-family: variables.$label_font;
+      text-transform:uppercase;
+    }
+    &__input , &__textarea{
+      display:block;
+      margin : $input_margin;
+      font-size:$reduced-font-size;
+      resize:none;
+      width:100%;
+      padding : $input_padding;
+      font-family:variables.$label_font;
+      letter-spacing: variables.$letter_spacing;
+      border-radius:variables.$small_border_radius;
+      outline:variables.$outline;
+      background-color: variables.$input_non-focus_background;
+      border:0px;
+      &:disabled{
+        background-color:variables.$focus_block_color;
+        outline-color:lightgray;
+        &:focus , &:hover{
+          background-color:variables.$focus_block_color;
+        }
+      }
+      &:focus , &:hover{
+        background-color:variables.$input_focus_background;
+      }
+    }
+    &__info{
+      width:100%;
+      position:absolute;
+      bottom:0px;
+      display:flex;
+      align-items:stretch;
+      justify-content: center;
+      gap:1em;
+      &[type="error"]{
+        color : variables.$error_color;
+      }
+      &[type="default"]{
+        color : variables.$focus_stroke_color;
+      }
+      &::after{
+        content:"";
+        height:2px;
+        background-color: currentColor;
+        width:100vw;
+        position:absolute;
+        top:50%;
+      }
+      & [data-info-icon]{
+        height:$info_circle_size;
+        width:$info_circle_size;
+        border:2px solid currentColor;
+        border-radius:variables.$circle_border_radius;
+        background:white;
+        z-index:1;
+        display:inline-grid;
+        place-items:center;
+        font-style:normal;
+        font-family:variables.$input_font;
+        font-weight:800;
+      }
+      & [data-info-text]{
+        transition: width 0.3s ease-in-out;
+        &:empty{
+          padding:0px;
+          border:0px solid currentColor;
+          width:0px;
+        }
+        padding:0px 1em;
+        display:inline-grid;
+        place-items:center;
+        font-family:variables.$label_font;
+        letter-spacing:variables.$letter_spacing;
+        border:2px solid currentColor;
+        z-index:1;
+        background:white;
+        border-radius:variables.$very_large_border_radius;
+      }
+    }
+    &:focus-within &__info{
+      &[type="default"]{
+        color : black;
+      }
+      & [data-info-icon]{
+        outline-offset : -10px;
+        transition:outline-offset 0.2s ease-out;
+        outline:2px solid black;
+      }
+
+      &[type="error"] [data-info-icon]{
+        outline:0px solid black;
+      }
+    }
+    &__options{
+      list-style:none;
+      margin:1em 0px;
+      padding-left:0px;
+      display:flex;
+      font-family:variables.$label_font;
+      font-size:$reduced-font-size;
+      gap:2em;
+      & input[type="radio"]{
+        display:none;
+      }
+      & input[type="radio"]:checked{
+        &+label{
+          & .option-icon{
+            &::after{
+              transform:scale(0.5);
+            }
+          }
+        }
+      }
+      & .option{
+        display:inline-flex;
+        align-items:center;
+        gap:0.5em;
+        padding:0.5em;
+        & .option-icon{
+          width:variables.$radio_size; 
+          height:variables.$radio_size;
+          border:2px solid black;
+          border-radius:variables.$circle_border_radius;
+          position:relative;
+          &::after{
+            inset: 0px;
+            border-radius:variables.$circle_border_radius;
+            position:absolute;
+            transform:scale(0);
+            background:black;
+            content:"";
+            transition:transform 0.3s ease-in-out;
+          }
+        }
+      }
+    }
+  }
+  &__button-group{
+    @include input-group-width();
+    display:flex;
+    margin:2em auto;
+    align-items:center;
+    gap:1.5em;
+    justify-content: flex-end;
+    &__button{
+      background-color:variables.$submit_button_background;
+      color:variables.$submit_button_color;
+      padding:0.3em 1em;
+      font-family:variables.$label_font;
+      font-size:$font-size;
+      border:0px solid black;
+      align-items:center;
+      border-radius:variables.$small_border_radius;
+      display:block;
+      width:100%;
+      outline:2px solid currentColor;
+      &-icon{
+        outline-color:variables.$circle_button_border;
+        outline-offset: 5px;
+        border:2px solid variables.$circle_button_border;
+        padding:variables.$large_icon_padding;
+        border-radius: variables.$circle_border_radius;
+        width:variables.$large_icon_size;
+        height:variables.$large_icon_size;
+        box-shadow:0px 0px 30px 10px rgba(0,0,0,0.2);
+        display:inline-grid;
+        place-items:center;
+
+        position:fixed;
+        left:1em;
+        bottom:1em;
+
+        &:focus , &:hover{
+          outline-color:black;
+          border:0px;
+        }
+      }
+      &:focus , &:hover{
+        background-color:black;
+        color:white;
+      }
+    }
+  }
+}
+
+.message-box{
+
+  @include variables.message_css();
+  font-family: variables.$label_font;
+  background-color:#f5f5f5;
+  position:fixed;
+  bottom:1em;
+  right:1em;
+  outline:2px solid currentColor;
+  transition:transform 0.3s ease-in-out;
+  transform:translateX(150%);
+  z-index:100;
+  &[type]{
+    transform:translateX(0px);
+  }
+  &[type="error"]{
+    color:variables.$error_color;
+  }
+  &[type="default"]{
+    color : variables.$info_color;
+  }
+  &__heading{
+    margin-top:0px;
+    margin-bottom:0.2em;
+  }
+  &__text{
+    margin:0px;
+    font-size:1.2em;
+    color:black;
+  }
+}

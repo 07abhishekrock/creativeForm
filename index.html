@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Form</title>
+</head>
+<body>
+  <form class="form-body" id="main-form">
+    <div class="form-body__input-group">
+      <label class="form-body__input-group__label" id="first-name">First Name</label>
+      <input 
+        type="text" 
+        name="first-name"
+        id="first-name"
+        class="form-body__input-group__input"
+      />
+    </div>
+    <div class="form-body__input-group">
+      <label class="form-body__input-group__label" id="last-name">Last Name</label>
+      <input 
+        type="text" 
+        name="last-name"
+        id="last-name"
+        class="form-body__input-group__input"
+      />
+    </div>
+    <div class="form-body__input-group">
+      <label class="form-body__input-group__label">Marital Status</label>
+      <ul class="form-body__input-group__options">
+        <li tabindex="0"class="form-body__input-group__option">
+          <input id="marital-status-option--married" type="radio" name="marital-status" value="married" enableEdit="spouse"/>
+          <label for="marital-status-option--married" class="option">
+            <i class="option-icon"></i>
+            <span class="option-text">Married</span>
+          </label>
+        </li>
+        <li tabindex="0"class="form-body__input-group__option">
+          <input id="marital-status-option--unmarried" type="radio" name="marital-status" value="unmarried"/>
+          <label for="marital-status-option--unmarried" class="option">
+            <i class="option-icon"></i>
+            <span class="option-text">Unmarried</span>
+          </label>
+        </li>
+      </ul>
+    </div>
+    <div class="form-body__input-group">
+      <label class="form-body__input-group__label">Gender</label>
+      <ul class="form-body__input-group__options">
+        <li tabindex="0"class="form-body__input-group__option">
+          <input type="radio" name="gender" id="gender--male" value="male">
+          <label class="option" for="gender--male">
+            <i class="option-icon"></i>
+            <span class="option-text">Male</span>
+          </label>
+        </li>
+        <li tabindex="0"class="form-body__input-group__option">
+          <input type="radio" name="gender" id="gender--female" value="female">
+          <label class="option" for="gender--female">
+            <i class="option-icon"></i>
+            <span class="option-text">Female</span>
+          </label>
+        </li>
+        <li tabindex="0"class="form-body__input-group__option">
+          <input type="radio" name="gender" id="gender--others" value="others">
+          <label class="option" for="gender--others">
+            <i class="option-icon"></i>
+            <span class="option-text">Others</span>
+          </label>
+        </li>
+      </ul>
+    </div>
+    <div class="form-body__input-group">
+      <label class="form-body__input-group__label" for="spouse-name">Spouse Name</label>
+      <input 
+        type="text" 
+        name="spouse"
+        id="spouse-name"
+        class="form-body__input-group__input"
+      />
+    </div>
+    <div class="form-body__input-group">
+      <label class="form-body__input-group__label" for="other-details-input">Other Details</label>
+      <textarea 
+        name="other-details"
+        id="other-details-input"
+        class="form-body__input-group__textarea"
+      >
+      </textarea>
+    </div>
+    <div class="form-body__button-group">
+      <button class="form-body__button-group__button" id="submit-btn">Submit Form</button>
+      <button class="form-body__button-group__button form-body__button-group__button-icon" id="reset-btn" type="button">
+        <svg viewBox="0 0 59 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M56.6071 33.6717L35.1359 49.2035C25.9626 55.8394 13.1468 53.7823 6.51095 44.609V44.609C-0.124883 35.4357 1.93216 22.6198 11.1055 15.984L29.3357 2.79657M29.3357 2.79657L10 2.79682M29.3357 2.79657L24 20.9997" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </form>
+  <div class="message-box" id="message">
+    <h3 class="message-box__heading">Message</h3>
+    <p class="message-box__text">Hello World , this is me and I don't care how long this is gonna take.</p>
+  </div>
+  <script src="app.js" type="module"></script>
+</body>
+</html>

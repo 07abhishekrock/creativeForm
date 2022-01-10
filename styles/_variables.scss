@@ -1,0 +1,43 @@
+@import url(https://fonts.googleapis.com/css?family=Patrick+Hand:regular);
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:regular,italic,700,700italic);
+
+$error_color : #FF7A7A;
+$focus_stroke_color : #8D8D8D;
+$focus_block_color : #E7E7E7;
+$info_color : dodgerblue;
+
+$submit_button_background : #FFF;
+$submit_button_color : #000;
+$circle_button_border : #fff;
+$circle_button_color : #888;
+
+$label_font : "Patrick Hand" , sans-serif;
+$input_font : "PT Sans" , sans-serif;
+
+$input_focus_background : white;
+$input_non-focus_background : #f5f5f5;
+
+$small_border_radius : 0.1em;
+$medium_border_radius : 0.3em;
+$very_large_border_radius : 2em;
+
+$letter_spacing : 0.05em;
+
+$outline : 2px solid black;
+
+$large_icon_size : 2em;
+$large_icon_padding : 0.4em;
+
+$radio_size : 1em;
+$circle_border_radius:50%;
+
+
+
+@mixin message_css(){
+     width : 400px;
+     max-width:90%;
+     border-radius:$medium_border_radius;
+     padding : 1em;
+     box-shadow:0px 0px 25px 5px rgba(0,0,0,0.05);
+     letter-spacing:0.05em;
+}
