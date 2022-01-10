@@ -124,7 +124,9 @@ export default class FormWrapper{
 
      submitForm(){
           const currentFormState = this.getCurrentFormState();
+          const messageInstance = getMessageInstance();
           const errorFields = [];
+
           this.inputArray.forEach(({fieldName , isValid , errorObject})=>{
                const errorInField = isValid(currentFormState[fieldName] || '');
                const isFieldDisabled = document.getElementsByName(fieldName)[0].disabled;
@@ -141,11 +143,15 @@ export default class FormWrapper{
           if(errorFields.length > 0){
                //there is error in form
                const first_element_with_error = Array.from(document.getElementsByName(errorFields[0]))[0];
-               const messageInstance = getMessageInstance();
 
                this.shiftFocusToElement(first_element_with_error);
                messageInstance && messageInstance.showError('You have some errors in your form');
 
+          }
+          else{
+               //form is valid
+               console.log('form is valid');
+               messageInstance && messageInstance.showInfo('Thankyou, your form has been submitted');
           }
 
      }

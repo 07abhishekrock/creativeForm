@@ -13,7 +13,7 @@ const mainForm = new FormWrapper({
             error : 'First Name cannot be empty'
           }
         }
-        else if(value.split(' ').length > 1){
+        else if(value.trim().split(' ').length > 1){
           return {
             error : 'First Name cannot have whitespaces'
           } 
@@ -32,7 +32,7 @@ const mainForm = new FormWrapper({
             error : 'Last Name cannot be empty'
           }
         }
-        else if(value.split(' ').length > 1){
+        else if(value.trim().split(' ').length > 1){
           return {
             error : 'Last Name cannot have whitespaces'
           } 
@@ -78,7 +78,7 @@ const mainForm = new FormWrapper({
             error : 'Spouse Name cannot be empty'
           }
         }
-        else if(value.split(' ').length > 1){
+        else if(value.trim().split(' ').length > 1){
           return {
             error : 'Spouse Name cannot have whitespaces'
           } 
